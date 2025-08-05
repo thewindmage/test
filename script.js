@@ -4,13 +4,23 @@ document.addEventListener("DOMContentLoaded", () => {
     const hamburger = document.querySelector(".hamburger-menu")
     const navLinks = document.querySelector(".nav-links")
     const links = document.querySelectorAll(".nav-links li a")
+    const body = document.body
 
     if (hamburger && navLinks) {
-      // This is a placeholder for full functionality
-      // For now, we'll just log to console
       hamburger.addEventListener("click", () => {
-        console.log("Hamburger menu clicked")
-        // A full implementation would toggle an 'is-active' class here
+        hamburger.classList.toggle("is-active")
+        navLinks.classList.toggle("nav-active")
+        body.classList.toggle("no-scroll")
+      })
+
+      links.forEach((link) => {
+        link.addEventListener("click", () => {
+          if (hamburger.classList.contains("is-active")) {
+            hamburger.classList.remove("is-active")
+            navLinks.classList.remove("nav-active")
+            body.classList.remove("no-scroll")
+          }
+        })
       })
     }
   }
@@ -35,7 +45,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const hero = document.querySelector(".hero")
     if (hero) {
       const scrolled = window.pageYOffset
-      hero.style.transform = `translateY(${scrolled * 0.3}px)`
+      // Use a smaller multiplier for a more subtle effect that works on all screen sizes
+      hero.style.backgroundPositionY = `${scrolled * 0.3}px`
     }
   }
 
@@ -44,12 +55,33 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
       anchor.addEventListener("click", function (e) {
         const href = this.getAttribute("href")
+        const targetId = href.substring(1)
+        const targetElement = document.getElementById(targetId)
+
         // Ensure it's a local anchor link on the same page
-        if (href.startsWith("#") && document.getElementById(href.substring(1))) {
+        if (href.startsWith("#") && targetElement) {
           e.preventDefault()
-          document.querySelector(href).scrollIntoView({
-            behavior: "smooth",
-          })
+
+          const start = window.pageYOffset
+          const end = targetElement.getBoundingClientRect().top
+          const duration = 1200 // ms
+          let startTime = null
+
+          function animation(currentTime) {
+            if (startTime === null) startTime = currentTime
+            const timeElapsed = currentTime - startTime
+            const progress = Math.min(timeElapsed / duration, 1)
+
+            // Ease-out quint function
+            const ease = 1 - Math.pow(1 - progress, 5)
+
+            window.scrollTo(0, start + end * ease)
+
+            if (timeElapsed < duration) {
+              requestAnimationFrame(animation)
+            }
+          }
+          requestAnimationFrame(animation)
         }
       })
     })
