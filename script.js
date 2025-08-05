@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", () => {
   function handleMobileMenu() {
     const hamburger = document.querySelector(".hamburger-menu")
     const navLinks = document.querySelector(".nav-links")
-    const links = document.querySelectorAll(".nav-links li a")
     const body = document.body
 
     if (hamburger && navLinks) {
@@ -13,7 +12,8 @@ document.addEventListener("DOMContentLoaded", () => {
         body.classList.toggle("no-scroll")
       })
 
-      links.forEach((link) => {
+      // Add event listener to all links within the nav menu
+      navLinks.querySelectorAll("a").forEach((link) => {
         link.addEventListener("click", () => {
           if (hamburger.classList.contains("is-active")) {
             hamburger.classList.remove("is-active")
@@ -45,7 +45,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const hero = document.querySelector(".hero")
     if (hero) {
       const scrolled = window.pageYOffset
-      // Use a smaller multiplier for a more subtle effect that works on all screen sizes
       hero.style.backgroundPositionY = `${scrolled * 0.3}px`
     }
   }
@@ -58,7 +57,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const targetId = href.substring(1)
         const targetElement = document.getElementById(targetId)
 
-        // Ensure it's a local anchor link on the same page
         if (href.startsWith("#") && targetElement) {
           e.preventDefault()
 
@@ -71,12 +69,8 @@ document.addEventListener("DOMContentLoaded", () => {
             if (startTime === null) startTime = currentTime
             const timeElapsed = currentTime - startTime
             const progress = Math.min(timeElapsed / duration, 1)
-
-            // Ease-out quint function
             const ease = 1 - Math.pow(1 - progress, 5)
-
             window.scrollTo(0, start + end * ease)
-
             if (timeElapsed < duration) {
               requestAnimationFrame(animation)
             }
