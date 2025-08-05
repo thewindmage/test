@@ -113,7 +113,7 @@ nav {
   position: relative;
   z-index: 1003;
   width: 28px;
-  height: 22px;
+  height: 20px;
 }
 
 .hamburger-bar {
@@ -121,7 +121,6 @@ nav {
   width: 28px;
   height: 3px;
   background-color: #7b68a6;
-  margin: 6px 0;
   transition: all 0.4s ease-in-out;
   position: absolute;
   left: 0;
@@ -131,21 +130,22 @@ nav {
   top: 0;
 }
 .hamburger-bar:nth-child(2) {
-  top: 50%;
-  transform: translateY(-50%);
+  top: 8.5px;
 }
 .hamburger-bar:nth-child(3) {
-  bottom: 0;
+  top: 17px;
 }
 
 .hamburger-menu.is-active .hamburger-bar:nth-child(1) {
-  transform: translateY(9.5px) rotate(45deg);
+  top: 8.5px;
+  transform: rotate(45deg);
 }
 .hamburger-menu.is-active .hamburger-bar:nth-child(2) {
   opacity: 0;
 }
 .hamburger-menu.is-active .hamburger-bar:nth-child(3) {
-  transform: translateY(-9.5px) rotate(-45deg);
+  top: 8.5px;
+  transform: rotate(-45deg);
 }
 
 /* Hero Section */
