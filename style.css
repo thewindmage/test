@@ -362,7 +362,7 @@ nav {
   align-items: center;
   justify-content: center;
   padding: 5rem 5%;
-  z-index: 2;
+  z-index: 3;
 }
 
 .popup-content {
@@ -384,6 +384,7 @@ nav {
 .about-popup {
   background: linear-gradient(135deg, #7b68a6 0%, #6a5b94 100%);
   color: white;
+  z-index: 4;
 }
 
 .about-content {
@@ -430,6 +431,7 @@ nav {
 .contact-popup {
   background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
   color: white;
+  z-index: 5;
 }
 
 .contact-content {
@@ -546,7 +548,7 @@ footer {
   text-align: center;
   padding: 2rem 5%;
   position: relative;
-  z-index: 2;
+  z-index: 6;
 }
 
 footer p {
