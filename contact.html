@@ -1,67 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us | Caring Hands Ireland</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | Caring Hands Ireland</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <!-- Navigation -->
-    <div class="nav-container">
-        <nav>
-            <a href="index.html" class="logo mystique-accent">Caring Hands</a>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="services.html">Our Services</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-            <a href="contact.html" class="cta-button">Get Started</a>
-            <button class="hamburger-menu" aria-label="Open navigation menu" aria-expanded="false">
-                <span class="hamburger-bar"></span>
-                <span class="hamburger-bar"></span>
-                <span class="hamburger-bar"></span>
-            </button>
-        </nav>
-    </div>
+<body class="contact-page">
+  <!-- Navigation -->
+  <div class="nav-container">
+      <nav>
+          <a href="index.html" class="logo mystique-accent">Caring Hands</a>
+          <ul class="nav-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="services.html">Our Services</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="contact.html">Contact</a></li>
+          </ul>
+          <a href="contact.html" class="cta-button">Get Started</a>
+          <button class="hamburger-menu" aria-label="Open navigation menu" aria-expanded="false">
+              <span class="hamburger-bar"></span>
+              <span class="hamburger-bar"></span>
+              <span class="hamburger-bar"></span>
+          </button>
+      </nav>
+  </div>
 
-    <!-- Main Content -->
-    <main class="subpage-main">
-        <div class="subpage-content">
-            <h1>Contact Us</h1>
-            <p class="subtitle">[Insert a welcoming message encouraging users to get in touch.]</p>
-            
-            <form action="#" method="POST" class="contact-form">
-                <input type="text" name="name" placeholder="[Your Name]" required>
-                <input type="email" name="email" placeholder="[Your Email]" required>
-                <textarea name="message" rows="6" placeholder="[Your Message]" required></textarea>
-                <button type="submit" class="cta-button">[Send Message]</button>
-            </form>
+  <!-- Subpage Header with Celtic Knot -->
+  <header class="subpage-header">
+      <div class="container">
+          <h1 class="mystique-accent">Get In Touch</h1>
+          <p class="subtitle">We're here to help. Send us a message and we'll get back to you shortly.</p>
+      </div>
+  </header>
 
-            <div class="contact-info" style="margin-top: 4rem; text-align: center; color: #444;">
-                <div class="contact-item" style="background: none; backdrop-filter: none; border: none;">
-                    <h3>[Phone Title]</h3>
-                    <p>[Insert Phone Number]</p>
-                </div>
-                <div class="contact-item" style="background: none; backdrop-filter: none; border: none;">
-                    <h3>[Email Title]</h3>
-                    <p>[Insert Email Address]</p>
-                </div>
-                <div class="contact-item" style="background: none; backdrop-filter: none; border: none;">
-                    <h3>[Address Title]</h3>
-                    <p>[Insert Physical Address]</p>
-                </div>
-            </div>
-        </div>
-    </main>
+  <!-- Main Content -->
+  <main class="subpage-main">
+      <div class="subpage-content">
+          <div class="contact-layout">
+              <div class="contact-form-container">
+                  <h3>Send Us a Message</h3>
+                  <form action="#" method="POST" class="contact-form">
+                      <input type="text" name="name" placeholder="Your Name" required>
+                      <input type="email" name="email" placeholder="Your Email" required>
+                      <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
+                      <button type="submit" class="cta-button">Send Message</button>
+                  </form>
+              </div>
+              <div class="contact-details-container">
+                  <h3>Our Details</h3>
+                  <div class="contact-info contact-page-info">
+                      <div class="contact-item">
+                          <h4>Phone</h4>
+                          <p>+353 1 234 5678</p>
+                      </div>
+                      <div class="contact-item">
+                          <h4>Email</h4>
+                          <p>info@caringhands.ie</p>
+                      </div>
+                      <div class="contact-item">
+                          <h4>Address</h4>
+                          <p>123 Caring Way, Dublin, Ireland</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </main>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 [Your Company Name]. All rights reserved. | [Your Tagline Here]</p>
-        </div>
-    </footer>
-    <script src="script.js"></script>
+  <!-- Footer -->
+  <footer>
+      <div class="container">
+          <p>&copy; 2024 Caring Hands Ireland. All rights reserved. | Caring for Ireland, one home at a time.</p>
+      </div>
+  </footer>
+  <script src="script.js"></script>
 </body>
 </html>
