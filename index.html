@@ -3,529 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Healthcare Services Ireland</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Georgia', 'Times New Roman', serif;
-            line-height: 1.6;
-            color: #2c3e50;
-            background: #A4C49A;
-            overflow-x: hidden;
-        }
-
-        /* Navigation */
-        .nav-container {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 5%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 600;
-            color: #7B68A6;
-            letter-spacing: -0.5px;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #7B68A6;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .nav-links a:hover {
-            color: #6a5b94;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #7B68A6;
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .cta-button {
-            background: #4A90E2;
-            color: white;
-            padding: 0.7rem 1.5rem;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .cta-button:hover {
-            background: #357ABD;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(74, 144, 226, 0.3);
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            position: relative;
-            background: linear-gradient(135deg, #A4C49A 0%, #91b085 100%);
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="1" fill="rgba(135,206,235,0.25)"/><circle cx="80" cy="40" r="1.5" fill="rgba(135,206,235,0.22)"/><circle cx="40" cy="70" r="1" fill="rgba(135,206,235,0.25)"/><circle cx="70" cy="80" r="1.2" fill="rgba(135,206,235,0.23)"/><circle cx="30" cy="50" r="0.8" fill="rgba(135,206,235,0.24)"/><circle cx="60" cy="25" r="1.3" fill="rgba(135,206,235,0.21)"/><circle cx="15" cy="75" r="1.1" fill="rgba(135,206,235,0.26)"/><circle cx="85" cy="65" r="0.9" fill="rgba(135,206,235,0.23)"/></svg>');
-            animation: float 20s infinite linear;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0) translateX(0); }
-            25% { transform: translateY(-10px) translateX(5px); }
-            50% { transform: translateY(0) translateX(-5px); }
-            75% { transform: translateY(10px) translateX(5px); }
-            100% { transform: translateY(0) translateX(0); }
-        }
-
-        .hero-content {
-            max-width: 800px;
-            padding: 2rem;
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-            color: white;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-            line-height: 1.2;
-            font-weight: 400;
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            color: rgba(255,255,255,0.9);
-            font-style: italic;
-        }
-
-        .hero .cta-button {
-            font-size: 1.1rem;
-            padding: 1rem 2.5rem;
-            margin: 0 1rem;
-            background: white;
-            color: #7B68A6;
-        }
-
-        .hero .cta-button:hover {
-            background: #f8f9fa;
-            transform: translateY(-3px);
-        }
-
-        /* Services Section */
-        .services {
-            padding: 8rem 5% 5rem 5%;
-            background: white;
-            position: relative;
-        }
-
-        .services::before {
-            content: '';
-            position: absolute;
-            top: -50px;
-            left: 0;
-            right: 0;
-            height: 100px;
-            background: #A4C49A;
-            clip-path: polygon(0 50px, 100% 0, 100% 50px, 0 100%);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .section-title h2 {
-            font-size: 2.5rem;
-            color: #7B68A6;
-            margin-bottom: 1rem;
-            font-weight: 300;
-        }
-
-        .section-title p {
-            font-size: 1.2rem;
-            color: #666;
-            max-width: 600px;
-            margin: 0 auto;
-            font-style: italic;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .service-card {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 15px;
-            text-align: center;
-            transition: all 0.4s ease;
-            border: 5px solid transparent;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .service-card:hover {
-            border-color: #7B68A6;
-        }
-
-        .service-card:hover,
-        .service-card.js-hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 35px rgba(123, 104, 166, 0.15);
-            border-color: #7B68A6;
-        }
-
-        .service-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #4A90E2 0%, #357ABD 100%);
-            border-radius: 50%;
-            margin: 0 auto 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            color: white;
-            box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
-            transition: all 0.4s ease;
-        }
-
-        .service-card:hover .service-icon,
-        .service-card.js-hover .service-icon {
-            transform: scale(1.1);
-            box-shadow: 0 8px 25px rgba(74, 144, 226, 0.4);
-        }
-
-        .service-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: #7B68A6;
-            transition: all 0.4s ease;
-        }
-
-        .service-card:hover h3,
-        .service-card.js-hover h3 {
-            color: #6a5b94;
-        }
-
-        .service-card p {
-            color: #666;
-            line-height: 1.8;
-            transition: all 0.4s ease;
-        }
-
-        .service-card:hover p,
-        .service-card.js-hover p {
-            color: #555;
-        }
-
-        /* Popup Book Sections */
-        .popup-section {
-            min-height: 100vh;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 5rem 5%;
-        }
-
-        .popup-content {
-            transform: translateY(100px) rotateX(-15deg);
-            opacity: 0;
-            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            transform-style: preserve-3d;
-            perspective: 1000px;
-            max-width: 1200px;
-            width: 100%;
-        }
-
-        .popup-content.popup-active {
-            transform: translateY(0) rotateX(0deg);
-            opacity: 1;
-        }
-
-        /* About Popup */
-        .about-popup {
-            background: linear-gradient(135deg, #7B68A6 0%, #6a5b94 100%);
-            color: white;
-        }
-
-        .about-popup::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect x="20" y="30" width="60" height="40" fill="rgba(255,255,255,0.05)" rx="5"/><circle cx="30" cy="40" r="3" fill="rgba(255,255,255,0.1)"/><circle cx="70" cy="60" r="2" fill="rgba(255,255,255,0.08)"/></svg>');
-            animation: gentle-float 25s infinite linear;
-        }
-
-        @keyframes gentle-float {
-            0% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-20px) scale(1.02); }
-            100% { transform: translateY(0) scale(1); }
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .about-text h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            font-weight: 300;
-        }
-
-        .about-text p {
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
-            opacity: 0.9;
-        }
-
-        .about-image {
-            background: rgba(255, 255, 255, 0.1);
-            height: 400px;
-            border-radius: 20px;
-            position: relative;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .about-image::before {
-            content: 'Our Story';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            font-size: 1.2rem;
-            font-style: italic;
-        }
-
-        /* Contact Popup */
-        .contact-popup {
-            background: linear-gradient(135deg, #4A90E2 0%, #357ABD 100%);
-            color: white;
-        }
-
-        .contact-popup::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><polygon points="50,20 60,40 80,40 66,52 72,72 50,60 28,72 34,52 20,40 40,40" fill="rgba(255,255,255,0.08)"/><circle cx="25" cy="75" r="2" fill="rgba(255,255,255,0.06)"/></svg>');
-            animation: sparkle-drift 30s infinite linear;
-        }
-
-        @keyframes sparkle-drift {
-            0% { transform: rotate(0deg) translateX(0); }
-            100% { transform: rotate(360deg) translateX(10px); }
-        }
-
-        .contact-content {
-            text-align: center;
-        }
-
-        .contact-content h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            font-weight: 300;
-        }
-
-        .contact-content > p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-            font-style: italic;
-        }
-
-        .contact-info {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .contact-item {
-            background: rgba(255, 255, 255, 0.15);
-            padding: 2rem;
-            border-radius: 15px;
-            text-align: center;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.3s ease;
-        }
-
-        .contact-item:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.25);
-        }
-
-        .contact-item h3 {
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-            color: #A4C49A;
-        }
-
-        .contact-item p {
-            font-size: 1rem;
-            margin: 0;
-        }
-
-        /* Footer */
-        footer {
-            background: #2c3e50;
-            color: white;
-            text-align: center;
-            padding: 2rem 5%;
-        }
-
-        footer p {
-            opacity: 0.8;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero p {
-                font-size: 1.1rem;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .contact-info {
-                grid-template-columns: 1fr;
-            }
-
-            nav {
-                padding: 1rem 5%;
-            }
-        }
-
-        /* Animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 0.8s ease forwards;
-        }
-
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .mystique-accent {
-            position: relative;
-        }
-
-        .mystique-accent::after {
-            content: '✦';
-            position: absolute;
-            right: -20px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #A4C49A;
-            opacity: 0.6;
-            animation: sparkle-accent 3s ease-in-out infinite;
-        }
-
-        @keyframes sparkle-accent {
-            0%, 100% { opacity: 0.6; transform: translateY(-50%) scale(1); }
-            50% { opacity: 1; transform: translateY(-50%) scale(1.2); }
-        }
-    </style>
+    <title>Home | Caring Hands Ireland</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- Navigation -->
     <div class="nav-container">
         <nav>
-            <div class="logo mystique-accent">Caring Hands Ireland</div>
+            <a href="#home" class="logo mystique-accent">Caring Hands</a>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#about">About</a></li>
+                <li><a href="#services">Our Services</a></li>
+                <li><a href="#about">About Us</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <a href="#contact" class="cta-button">Get Started</a>
@@ -537,49 +26,67 @@
         <div class="hero-content fade-in">
             <h1 class="mystique-accent">Compassionate Care<br>in Your Home</h1>
             <p>Professional healthcare services delivered with warmth and dignity<br>across Ireland</p>
-            <a href="#services" class="cta-button">Discover Our Care</a>
-            <a href="#contact" class="cta-button">Schedule Consultation</a>
         </div>
+        <a href="#services" class="scroll-down-indicator">
+            <span>Scroll Down!</span>
+            <div class="scroll-arrow">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7 10L12 15L17 10" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+        </a>
     </section>
 
     <!-- Services Section -->
-    <section class="services" id="services">
+    <section class="services-section" id="services">
         <div class="container">
             <div class="section-title fade-in">
-                <h2 class="mystique-accent">Our Services</h2>
-                <p>Comprehensive healthcare services tailored to your unique needs</p>
+                <h2 class="mystique-accent">[Our Services Title]</h2>
+                <p>[Insert a brief, engaging summary of the services offered.]</p>
             </div>
             <div class="services-grid">
-                <div class="service-card fade-in">
-                    <div class="service-icon">🏥</div>
-                    <h3>Personal Care</h3>
-                    <p>Assistance with daily living activities, maintaining dignity and independence in your own home.</p>
-                </div>
-                <div class="service-card fade-in">
-                    <div class="service-icon">💊</div>
-                    <h3>Medication Management</h3>
-                    <p>Safe and reliable medication administration and monitoring by qualified healthcare professionals.</p>
-                </div>
-                <div class="service-card fade-in">
-                    <div class="service-icon">🩺</div>
-                    <h3>Health Monitoring</h3>
-                    <p>Regular health assessments and vital sign monitoring to ensure your wellbeing.</p>
-                </div>
-                <div class="service-card fade-in">
-                    <div class="service-icon">❤️</div>
-                    <h3>Companionship</h3>
-                    <p>Emotional support and social interaction to enhance quality of life and mental wellbeing.</p>
-                </div>
-                <div class="service-card fade-in">
-                    <div class="service-icon">🏠</div>
-                    <h3>Household Support</h3>
-                    <p>Light housekeeping, meal preparation, and other domestic tasks to maintain a comfortable home.</p>
-                </div>
-                <div class="service-card fade-in">
-                    <div class="service-icon">👩‍⚕️</div>
-                    <h3>Specialized Nursing</h3>
-                    <p>Expert nursing care for complex medical conditions and post-operative recovery.</p>
-                </div>
+                <a href="service-1.html" class="service-card-link">
+                    <div class="service-card fade-in">
+                        <div class="service-icon">🏥</div>
+                        <h3>[Service One Title]</h3>
+                        <p>[Insert a short description for service one.]</p>
+                    </div>
+                </a>
+                <a href="service-2.html" class="service-card-link">
+                    <div class="service-card fade-in">
+                        <div class="service-icon">💊</div>
+                        <h3>[Service Two Title]</h3>
+                        <p>[Insert a short description for service two.]</p>
+                    </div>
+                </a>
+                <a href="service-3.html" class="service-card-link">
+                    <div class="service-card fade-in">
+                        <div class="service-icon">🩺</div>
+                        <h3>[Service Three Title]</h3>
+                        <p>[Insert a short description for service three.]</p>
+                    </div>
+                </a>
+                <a href="service-4.html" class="service-card-link">
+                    <div class="service-card fade-in">
+                        <div class="service-icon">❤️</div>
+                        <h3>[Service Four Title]</h3>
+                        <p>[Insert a short description for service four.]</p>
+                    </div>
+                </a>
+                <a href="service-5.html" class="service-card-link">
+                    <div class="service-card fade-in">
+                        <div class="service-icon">🏠</div>
+                        <h3>[Service Five Title]</h3>
+                        <p>[Insert a short description for service five.]</p>
+                    </div>
+                </a>
+                <a href="service-6.html" class="service-card-link">
+                    <div class="service-card fade-in">
+                        <div class="service-icon">👩‍⚕️</div>
+                        <h3>[Service Six Title]</h3>
+                        <p>[Insert a short description for service six.]</p>
+                    </div>
+                </a>
             </div>
         </div>
     </section>
@@ -589,14 +96,13 @@
         <div class="popup-content">
             <div class="about-content">
                 <div class="about-text">
-                    <h2 class="mystique-accent">About Caring Hands</h2>
-                    <p>Founded with a mission to bring compassionate, professional healthcare directly to your doorstep, Caring Hands Ireland has been serving families across the country for over a decade.</p>
-                    <p>Our team of qualified healthcare professionals understands that there's no place like home. We believe that quality care should never require you to leave the comfort and familiarity of your own space.</p>
-                    <p>Every member of our team is carefully selected, thoroughly trained, and committed to upholding the highest standards of care while treating each client with the respect and dignity they deserve.</p>
-                    <a href="#contact" class="cta-button">Learn More</a>
+                    <h2 class="mystique-accent">[About Us Title]</h2>
+                    <p>[Insert a compelling paragraph about the company's mission and values.]</p>
+                    <p>[Insert another paragraph about the team or the history of the organization.]</p>
+                    <a href="about.html" class="cta-button">Learn More</a>
                 </div>
                 <div class="about-image">
-                    <!-- Your image will go here -->
+                    <!-- Placeholder for image -->
                 </div>
             </div>
         </div>
@@ -606,29 +112,30 @@
     <section class="popup-section contact-popup" id="contact">
         <div class="popup-content">
             <div class="contact-content">
-                <h2 class="mystique-accent">Get In Touch</h2>
-                <p>Ready to discuss how we can support you or your loved ones? We're here to help.</p>
+                <h2 class="mystique-accent">[Get In Touch Title]</h2>
+                <p>[Insert a friendly call-to-action to encourage users to reach out.]</p>
                 <div class="contact-info">
                     <div class="contact-item">
-                        <h3>Phone</h3>
-                        <p>+353 1 234 5678</p>
-                        <p style="font-size: 0.9rem; opacity: 0.8;">24/7 Emergency Line</p>
+                        <h3>[Contact Method One]</h3>
+                        <p>[Contact Detail One]</p>
                     </div>
                     <div class="contact-item">
-                        <h3>Email</h3>
-                        <p>info@caringhands.ie</p>
-                        <p style="font-size: 0.9rem; opacity: 0.8;">Response within 2 hours</p>
+                        <h3>[Contact Method Two]</h3>
+                        <p>[Contact Detail Two]</p>
                     </div>
                     <div class="contact-item">
-                        <h3>Service Areas</h3>
-                        <p>Dublin, Cork, Galway</p>
-                        <p style="font-size: 0.9rem; opacity: 0.8;">Expanding nationwide</p>
+                        <h3>[Contact Method Three]</h3>
+                        <p>[Contact Detail Three]</p>
                     </div>
-                    <div class="contact-item">
-                        <h3>Hours</h3>
-                        <p>Available 24/7</p>
-                        <p style="font-size: 0.9rem; opacity: 0.8;">Flexible scheduling</p>
-                    </div>
+                </div>
+                
+                <!-- Contact Page Link -->
+                <div class="contact-page-link-container">
+                    <a href="contact.html" class="contact-page-link">
+                        <span class="contact-link-icon">📝</span>
+                        <span class="contact-link-text">Send Us a Message</span>
+                        <span class="contact-link-subtitle">Visit our contact form page</span>
+                    </a>
                 </div>
             </div>
         </div>
@@ -637,134 +144,10 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2024 Caring Hands Ireland. All rights reserved. | Caring for Ireland, one home at a time.</p>
+            <p>&copy; 2024 [Your Company Name]. All rights reserved. | [Your Tagline Here]</p>
         </div>
     </footer>
 
-    <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    if (this.getAttribute('href') === '#home') {
-                        window.scrollTo({
-                            top: 0,
-                            behavior: 'smooth'
-                        });
-                    } else {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                }
-            });
-        });
-
-        // Popup book effect on scroll
-        function handlePopupEffects() {
-            const popupSections = document.querySelectorAll('.popup-content');
-            
-            popupSections.forEach(popup => {
-                const rect = popup.getBoundingClientRect();
-                const isVisible = rect.top < window.innerHeight * 0.8 && rect.bottom > 0;
-                
-                if (isVisible) {
-                    popup.classList.add('popup-active');
-                } else {
-                    popup.classList.remove('popup-active');
-                }
-            });
-        }
-
-        // Fade in animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animationDelay = '0.2s';
-                    entry.target.classList.add('fade-in');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Track mouse position and update hover states
-        let mouseX = 0;
-        let mouseY = 0;
-
-        // Update card hover states based on mouse position
-        function updateCardHoverStates() {
-            const serviceCards = document.querySelectorAll('.service-card');
-            let anyCardHovered = false;
-            
-            serviceCards.forEach(card => {
-                const rect = card.getBoundingClientRect();
-                const isMouseOver = mouseX >= rect.left && mouseX <= rect.right &&
-                                  mouseY >= rect.top && mouseY <= rect.bottom;
-                
-                if (isMouseOver) {
-                    card.classList.add('js-hover');
-                    anyCardHovered = true;
-                } else {
-                    card.classList.remove('js-hover');
-                }
-            });
-        }
-
-        // Update on mouse movement
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-            updateCardHoverStates();
-        });
-
-        // Clear hover states when mouse leaves window
-        document.addEventListener('mouseleave', () => {
-            document.querySelectorAll('.service-card').forEach(card => {
-                card.classList.remove('js-hover');
-            });
-        });
-
-        // Add scroll event listeners
-        let ticking = false;
-
-        function updateParallax() {
-            const scrolled = window.pageYOffset;
-            const hero = document.querySelector('.hero');
-            if (hero) {
-                hero.style.transform = `translateY(${scrolled * 0.3}px)`;
-            }
-            handlePopupEffects();
-            
-            // Force immediate hover state update during scroll
-            requestAnimationFrame(() => {
-                updateCardHoverStates();
-            });
-            
-            ticking = false;
-        }
-
-        window.addEventListener('scroll', (event) => {
-            if (!ticking) {
-                requestAnimationFrame(() => updateParallax());
-                ticking = true;
-            }
-        });
-
-        // Initialize popup effects
-        document.addEventListener('DOMContentLoaded', () => {
-            handlePopupEffects();
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
