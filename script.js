@@ -25,71 +25,100 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Function for the "popup book" effect on scroll
-  function handlePopupEffects() {
-    const popupSections = document.querySelectorAll(".popup-content")
-    if (!popupSections.length) return
+  // Smooth scrolling for navigation links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      
+      const targetId = this.getAttribute('href').substring(1);
+      const targetElement = document.getElementById(targetId);
+      
+      if (targetElement) {
+        const startPosition = window.pageYOffset;
+        const targetPosition = targetId === 'home' ? 0 : targetElement.offsetTop - 80;
+        const distance = targetPosition - startPosition;
+        const duration = 1500;
+        let startTime = null;
 
-    const triggerBottom = window.innerHeight * 0.8
-
-    popupSections.forEach((popup) => {
-      const popupTop = popup.getBoundingClientRect().top
-      if (popupTop < triggerBottom) {
-        popup.classList.add("popup-active")
+        function animation(currentTime) {
+          if (startTime === null) startTime = currentTime;
+          const timeElapsed = currentTime - startTime;
+          const progress = Math.min(timeElapsed / duration, 1);
+          
+          // Ease-out animation curve
+          const easeOut = 1 - Math.pow(1 - progress, 3);
+          
+          window.scrollTo(0, startPosition + (distance * easeOut));
+          
+          if (timeElapsed < duration) {
+            requestAnimationFrame(animation);
+          }
+        }
+        
+        requestAnimationFrame(animation);
       }
-    })
+    });
+  });
+
+  // Popup book effect on scroll
+  function handlePopupEffects() {
+    const popupSections = document.querySelectorAll('.popup-content');
+    
+    popupSections.forEach(popup => {
+      const rect = popup.getBoundingClientRect();
+      const isVisible = rect.top < window.innerHeight * 0.8 && rect.bottom > 0;
+      
+      if (isVisible) {
+        popup.classList.add('popup-active');
+      } else {
+        popup.classList.remove('popup-active');
+      }
+    });
   }
+
+  // Fade in animation on scroll
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.animationDelay = '0.2s';
+        entry.target.classList.add('fade-in');
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.fade-in').forEach(el => {
+    observer.observe(el);
+  });
 
   // Parallax effect for the homepage hero section
-  function handleParallax() {
-    const hero = document.querySelector(".hero")
+  function updateParallax() {
+    const scrolled = window.pageYOffset;
+    const hero = document.querySelector('.hero');
     if (hero) {
-      const scrolled = window.pageYOffset
-      hero.style.backgroundPositionY = `${scrolled * 0.3}px`
+      hero.style.transform = `translateY(${scrolled * 0.3}px)`;
     }
+    handlePopupEffects();
   }
 
-  // Smooth scroll for navigation links
-  function handleSmoothScroll() {
-    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-      anchor.addEventListener("click", function (e) {
-        const href = this.getAttribute("href")
-        const targetId = href.substring(1)
-        const targetElement = document.getElementById(targetId)
+  // Add scroll event listeners
+  let ticking = false;
 
-        if (href.startsWith("#") && targetElement) {
-          e.preventDefault()
-
-          const start = window.pageYOffset
-          const end = targetElement.getBoundingClientRect().top
-          const duration = 1200 // ms
-          let startTime = null
-
-          function animation(currentTime) {
-            if (startTime === null) startTime = currentTime
-            const timeElapsed = currentTime - startTime
-            const progress = Math.min(timeElapsed / duration, 1)
-            const ease = 1 - Math.pow(1 - progress, 5)
-            window.scrollTo(0, start + end * ease)
-            if (timeElapsed < duration) {
-              requestAnimationFrame(animation)
-            }
-          }
-          requestAnimationFrame(animation)
-        }
-      })
-    })
-  }
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        updateParallax();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
 
   // Initial calls
-  handleMobileMenu()
-  handlePopupEffects()
-  handleParallax()
-  handleSmoothScroll()
-
-  // Add scroll event listener
-  window.addEventListener("scroll", () => {
-    handlePopupEffects()
-    handleParallax()
-  })
-})
+  handleMobileMenu();
+  handlePopupEffects();
+});
