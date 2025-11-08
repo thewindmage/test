@@ -37,8 +37,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 1.5rem 5%;
-  max-width: 1200px;
-  margin: 0 auto;
+  width: 100%;
 }
 
 .logo {
@@ -49,6 +48,8 @@ nav {
   text-decoration: none;
   position: relative;
   z-index: 1002;
+  margin-right: auto;
+  /* Added margin-right auto to push logo fully to the left */
 }
 
 .nav-links {
@@ -747,35 +748,34 @@ footer p {
   border-radius: 0;
 }
 
-.contact-page .subpage-header::before {
+/* Celtic knot positioned on left side with proper padding */
+.subpage-header::before {
   content: "";
   position: absolute;
-  top: -2rem;
-  left: -2rem;
-  width: 200px;
-  height: 200px;
+  top: 50%;
+  left: 2rem;
+  transform: translateY(-50%);
+  width: 150px;
+  height: 150px;
   background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50,2.5 C25,40 75,40 50,2.5 M12,65 C50,15 50,15 88,65 M12,35 C88,35 50,85 12,35" stroke="%237b68a6" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M50,2.5 C75,2.5 97.5,25 97.5,50 C97.5,75 75,97.5 50,97.5 C25,97.5 2.5,75 2.5,50 C2.5,25 25,2.5 50,2.5 M50,10 C27.9,10 10,27.9 10,50 C10,72.1 27.9,90 50,90 C72.1,90 90,72.1 90,50 C90,27.9 72.1,10 50,10" stroke="%237b68a6" stroke-width="2" fill="none"/></svg>');
   background-size: contain;
   background-repeat: no-repeat;
-  opacity: 0.08;
-  transform: rotate(-15deg);
+  background-position: center;
+  opacity: 0.12;
   animation: gentle-sway 12s ease-in-out infinite;
   z-index: 0;
-}
-
-.contact-page .subpage-header h1::after {
-  display: none;
+  pointer-events: none;
 }
 
 @keyframes gentle-sway {
   0% {
-    transform: rotate(-15deg) scale(1);
+    transform: translateY(-50%) rotate(-5deg) scale(1);
   }
   50% {
-    transform: rotate(5deg) scale(1.05);
+    transform: translateY(-50%) rotate(5deg) scale(1.05);
   }
   100% {
-    transform: rotate(-15deg) scale(1);
+    transform: translateY(-50%) rotate(-5deg) scale(1);
   }
 }
 
@@ -906,12 +906,15 @@ footer p {
   justify-content: center;
   color: #a4c49a;
   font-size: 3rem;
-  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>');
-  background-size: 50%;
-  background-repeat: no-repeat;
-  background-position: center;
   border: 3px solid white;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+
+/* Removed problematic SVG, using emoji icon via ::before */
+.team-member-img::before {
+  content: "👤";
+  font-size: 2.5rem;
 }
 
 .team-member h4 {
@@ -1025,17 +1028,17 @@ footer p {
     padding-top: 6rem;
   }
 
+  /* Added fixed height for mobile service cards */
+  .service-card {
+    height: 380px;
+  }
+
   .popup-section {
     padding: 4rem 5%;
   }
 
   .contact-info {
     grid-template-columns: 1fr;
-  }
-
-  /* increased service card height to prevent skewing, matching desktop improvements */
-  .service-card {
-    height: 380px;
   }
 
   .subpage-header {
@@ -1049,6 +1052,13 @@ footer p {
 
   .subpage-header .subtitle {
     font-size: 1.1rem;
+  }
+
+  /* Reduced celtic knot size for mobile */
+  .subpage-header::before {
+    width: 100px;
+    height: 100px;
+    left: 1rem;
   }
 
   .subpage-main {
