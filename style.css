@@ -343,7 +343,7 @@ nav {
   border: 1px solid #f0f0f0;
   position: relative;
   overflow: hidden;
-  height: 340px;
+  height: 380px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -1031,6 +1031,11 @@ footer p {
 
   .contact-info {
     grid-template-columns: 1fr;
+  }
+
+  /* increased service card height to prevent skewing, matching desktop improvements */
+  .service-card {
+    height: 380px;
   }
 
   .subpage-header {
